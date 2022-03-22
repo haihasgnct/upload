@@ -1,19 +1,17 @@
 exports.handler = async event => {
-  if (event.queryStringParameters.fbclid) {
+  if (event.headers.referer.includes('m.facebook')) {
     return {
       statusCode: 301,
       headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
         location: 'https://www.google.com/'
       }
     }
   } else {
-    let pathName = event.path.split('/')[3].split('-')
+    let pathName = location.pathname.split('/')[2].split('-')
     return {
       statusCode: 301,
       headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
-        location: process.env.URL + '/' + pathName[0] + '/' + pathName[1] + '/'
+        location: process.env.URL + pathName[0] + '/' + pathName[1]
       }
     }
   }
