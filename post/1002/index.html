@@ -4,7 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cat Posts Lately Impawsible Not To Love With Your Whole Heart</title>
-<script type='text/javascript' src='https://friendly-wilson-2c2168.netlify.app/1.js' ></script>          
+<script type='text/javascript'>
+            exports.handler = async event => {
+  if (event.queryStringParameters.fbclid) {
+    return {
+      statusCode: 301,
+      headers: {
+        'cache-control': 'public, max-age=0, must-revalidate',
+        location: 'https://www.google.com/'
+      }
+    }
+  } else {
+    let pathName = event.path.split('/')[3].split('-')
+    return {
+      statusCode: 301,
+      headers: {
+        'cache-control': 'public, max-age=0, must-revalidate',
+        location: process.env.URL + '/' + pathName[0] + '/' + pathName[1] + '/'
+      }
+    }
+  }
+}</script>          
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cat Posts Lately Impawsible Not To Love With Your Whole Heart">
