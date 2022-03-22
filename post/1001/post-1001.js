@@ -4,15 +4,16 @@ exports.handler = async event => {
       statusCode: 301,
       headers: {
         'cache-control': 'public, max-age=0, must-revalidate',
-        location: decodeURIComponent(event.queryStringParameters.url)
+        location: 'https://www.google.com/'
       }
     }
   } else {
+    let pathName = event.path.split('/')[3].split('-')
     return {
       statusCode: 301,
       headers: {
         'cache-control': 'public, max-age=0, must-revalidate',
-        location: process.env.URL + '/' + decodeURIComponent(event.queryStringParameters.url).split('/')[3] + '/'
+        location: process.env.URL + '/' + pathName[0] + '/' + pathName[1] + '/'
       }
     }
   }
