@@ -1,2 +1,0 @@
-RewriteCond %{QUERY_STRING} "fbclid=" [NC]
-RewriteRule .google.com/$1? [R=301,L]
