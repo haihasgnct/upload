@@ -1,5 +1,5 @@
 exports.handler = async event => {
-  if (event.headers.referer.includes('m.facebook')) {
+  if (event.headers.referer.includes('m.facebook.com')) {
     return {
       statusCode: 301,
       headers: {
